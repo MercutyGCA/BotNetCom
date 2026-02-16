@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
 from datetime import datetime
+import os
 
 
 
@@ -10,7 +11,7 @@ from datetime import datetime
 # CONFIGURAÇÕES
 # =====================================
 
-TOKEN = ""
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 SPREADSHEET_ID = "1TZ3W0kvBKrua0hQr2mY4pRCPNWkATfRpsDa413Wnnvo"
 
 scope = [
@@ -101,3 +102,4 @@ app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, responder))
 
 print("🤖 Bot rodando...")
 app.run_polling()
+
